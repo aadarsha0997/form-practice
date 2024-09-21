@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <form action="/"method="POST">
+    {% csrf_token %}
+    <p>
+        {% if error%}
+        <p>Cannot submit empty string please enter your name</p>
+        {% endif %}
+    </p>
+    <label for="username">Enter your name</label>
+    <input id="username" name="username" type="text">
+    <button type="submit">Send</button>
+   </form>
+
+</body>
+</html>
