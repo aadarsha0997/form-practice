@@ -8,13 +8,7 @@
 <body>
    <form action="/"method="POST">
     {% csrf_token %}
-    <p>
-        {% if error%}
-        <p>Cannot submit empty string please enter your name</p>
-        {% endif %}
-    </p>
-    <label for="username">Enter your name</label>
-    <input id="username" name="username" type="text">
+   {{form}}
     <button type="submit">Send</button>
    </form>
 
