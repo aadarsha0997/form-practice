@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 urlpatterns = [
-    path("",views.review),
-    path("thanks",views.thank_you)
+    # path("",views.review),   normal function base view
+    path("",views.ReviewView.as_view()),
+    path("thank-you",views.thank_you)
 ]
