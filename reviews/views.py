@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from .forms import ReviewForm
 from .models import Review
 from django.views import View
+from django.views.generic import TemplateView
 
 
 
@@ -46,5 +47,43 @@ class ReviewView(View):
 #     return render(request,"reviews/review.html",{
 #         "form":form
 #     })
-def thank_you (request):
-    return render(request,"reviews/thank-you.html")
+
+
+#### function base view#### of thankyou
+
+# def thank_you (request):
+
+
+#### Class base view#### of thankyou
+
+# class ThankYouView(View):
+#     def get(self,request):
+#         return render(request,"reviews/thank-you.html")
+
+
+####### class base view but specific for returning templete ####
+class ThankYouView(TemplateView):
+    template_name="reviews/thank-you.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["message"] = "This  really works"
+        return context
+
+class ReviewsListView(TemplateView):
+    template_name="reviews/review-list.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        review= Review.objects.all()
+        context["reviews"] = review
+        return context
+class DetailView(TemplateView):
+    template_name="reviews/detail-view.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        selected_id=kwargs["id"]
+        selected_review=Review.objects.get(pk=selected_id)
+        context["review"] = selected_review
+        return context
+    
+    
+    
