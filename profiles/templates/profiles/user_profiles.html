@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User_profiles</title>
+</head>
+<body>
+    <ul>
+        {% for profile in profiles %} {% comment %} profiles is name assigne in profileviews as context_object_name  {% endcomment %}
+        <li>
+            <img src="{{profile.image.url}}">
+        </li>    {% comment %} image is field name in our model {% endcomment %}
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -125,3 +125,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT= BASE_DIR/ "uploads"   # location to save file and uploads in name of folder to save
+MEDIA_URL= "/user-media/"
