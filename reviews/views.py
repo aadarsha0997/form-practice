@@ -128,6 +128,12 @@ class DetailView(DetailView):
     template_name="reviews/detail-view.html"
     model=Review
 
-    
+
+class AddFavoriteView(View) :
+    def post(self,request):
+        review_id=request.POST["reveiw_id"]
+        fav_review=Review.objects.get(pk=review_id)
+        request.session["favorite_review"] =fav_review
+        return HttpResponseRedirect("/reviews/"+review_id)
     
     
